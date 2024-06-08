@@ -7,21 +7,24 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { NewTodo } from './pages/NewTodo/index.tsx';
+import { AppProvider } from './context/AppContext.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App />,
   },
   {
     path: "/new",
-    element: <NewTodo/>,
+    element: <NewTodo />,
   },
 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-   <RouterProvider router={router} />
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
   </React.StrictMode>,
 )
