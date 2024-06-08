@@ -17,20 +17,22 @@ export const Home = () => {
 
 
     return (
-        <div className="px-6 pt-8 space-y-2">
+        <div className="px-6 pt-8 ">
             <div className="flex justify-between items-center mb-8">
                 <p className="text-3xl font-light">Agenda<span className="font-semibold text-slate-600">ACS</span></p>
                 <ArrowDownNarrowWide className={isReverseOrder ? 'text-green-400' : ''} onClick={() => changeOrder()} />
 
             </div>
 
-            {
+            <div className=" gap-2 lg:grid grid-cols-3">       {
                 !!tasks && tasks.map(item =>
                     <Card
                         todo={item}
                         key={item.id}
                     />)
             }
+            </div>
+
 
             <div className="relative">
                 <div className="fixed bottom-4 right-4 font-bold py-2 px-4 rounded">

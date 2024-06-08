@@ -34,10 +34,10 @@ export const Card = ({ todo }: CardProps) => {
 
 
     return (
-        <div onClick={() => onChangeState()} className="flex justify-between border-zinc-400 border-2 rounded-md p-4">
+        <div onClick={() => onChangeState()} className="flex mb-2 justify-between border-zinc-400 border-2 rounded-md p-4">
             <div>
                 <p className="font-semibold text-zinc-600">{todo.description}</p>
-                <p className="mt-6 text-xs text-slate-400">{dayjs(todo?.date).format(`d [de] MMMM hh:mm`)}</p>
+                <p className="mt-6 text-xs text-slate-400">{dayjs(todo?.date).format(`d [de] MMMM HH:mm`)}</p>
             </div>
             {
                 done ? <Check /> : null
