@@ -8,7 +8,7 @@ import { useAppContext } from "../../context/AppContext";
 export const Home = () => {
     const route = useNavigate()
 
-    const { tasks, changeOrder } = useAppContext()
+    const { tasks, changeOrder, isReverseOrder } = useAppContext()
 
     function onNewTodo() {
         route('/new')
@@ -19,17 +19,17 @@ export const Home = () => {
     return (
         <div className="px-6 pt-8 space-y-2">
             <div className="flex justify-between items-center mb-8">
-                <p className="text-3xl font-extralight-">Tarefas</p>
-                <ArrowDownNarrowWide onClick={() => changeOrder()} />
+                <p className="text-3xl font-light">Agenda<span className="font-semibold text-slate-600">ACS</span></p>
+                <ArrowDownNarrowWide className={isReverseOrder ? 'text-green-400' : ''} onClick={() => changeOrder()} />
 
             </div>
 
             {
-                !!tasks && tasks.map(item => <Card 
-                    id={item.id}
-                    isChecked={item.done}
-                    key={item.id} 
-                    description={item.description} />)
+                !!tasks && tasks.map(item =>
+                    <Card
+                        todo={item}
+                        key={item.id}
+                    />)
             }
 
             <div className="relative">

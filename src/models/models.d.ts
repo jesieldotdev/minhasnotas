@@ -2,5 +2,5 @@ export interface Task{
     description: string
     done?:boolean
     id: number | string
-    date: Date
+    date: string
 }

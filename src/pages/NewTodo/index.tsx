@@ -41,7 +41,7 @@ export const NewTodo = () => {
 
         <div className="px-6 pt-8 space-y-2 h-full">
             <div className="flex justify-between items-center mb-8">
-                <p className="text-4xl font-bold text-zinc-700">Nova tarefa</p>
+                <p className="text-3xl font-bold text-zinc-700">Nova tarefa</p>
                 <X onClick={() => onClose()} className="w-10 h-10" />
 
 
@@ -56,9 +56,9 @@ export const NewTodo = () => {
 
             />
 
-            <div className="flex w-full h-16 p-4 border-2 border-zinc-400 rounded mt-16">
+            {/* <div className="flex w-full h-16 p-4 border-2 border-zinc-400 rounded mt-16">
                 <p className="text-zinc-400">Escolha o dia e hora</p>
-            </div>
+            </div> */}
             <ActionButton title="Salvar" onClick={() => addTodo()} />
 
         </div>

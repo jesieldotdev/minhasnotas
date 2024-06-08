@@ -14,6 +14,7 @@ type AppContextProps = {
     setIsLoading: (b: boolean) => void
     fetchTasks: () => void
     changeOrder: () => void
+    isReverseOrder: boolean
 };
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -63,7 +64,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
             isLoading,
             setIsLoading,
             fetchTasks,
-            changeOrder
+            changeOrder,
+            isReverseOrder
 
         }}>
             {children}
