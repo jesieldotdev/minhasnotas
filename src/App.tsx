@@ -3,7 +3,7 @@ import { NewTodo } from './pages/NewTodo'
 
 function App() {
 
-  return (<NewTodo/>)
+  return (<Home/>)
 }
 
 export default App

@@ -1,14 +1,14 @@
 import { Plus } from "lucide-react"
 
 
-interface AddButtonProps{
-
+interface AddButtonProps {
+    onClick: () => void
 }
 
-export const AddButton = () => {
+export const AddButton = ({ onClick }: AddButtonProps) => {
     return (
-        <button className="bg-zinc-900 p-4">
-            <Plus className="text-slate-100"/>
+        <button onClick={()=>onClick()} className="bg-zinc-900 p-4">
+            <Plus className="text-slate-100" />
 
         </button>
     )
