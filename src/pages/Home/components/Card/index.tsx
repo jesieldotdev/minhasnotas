@@ -34,8 +34,8 @@ export const Card = ({ isChecked, description, id }: CardProps) => {
     return (
         <div onClick={() => onChangeState()} className="flex justify-between border-slate-300 border-2 rounded-md p-4">
             <div>
-                <p className="font-medium ">{description}</p>
-                <p className="mt-6 text-sm text-slate-500">15 janeiro 2024 10:00 AM</p>
+                <p className="font-semibold text-zinc-600">{description}</p>
+                <p className="mt-6 text-xs text-slate-400">15 janeiro 2024 10:00 AM</p>
             </div>
             {
                 done ? <Check /> : null

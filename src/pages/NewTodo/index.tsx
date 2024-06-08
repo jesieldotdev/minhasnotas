@@ -14,7 +14,7 @@ export const NewTodo = () => {
     }
 
     const date = new Date()
-    const {setTasks} = useAppContext()
+    const { setTasks } = useAppContext()
 
     const addTodo = () => {
         fetch('http://localhost:3000/tasks', {
@@ -22,22 +22,20 @@ export const NewTodo = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({description}),
+            body: JSON.stringify({ description, date: date }),
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data,);
                 setTasks(prev => {
-                   
+
                     return [...prev, data]
                 })
-                // Aqui você pode atualizar a lista de usuários ou fazer algo com os dados retornados
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
-    onClose()
-        };
+        onClose()
+    };
 
     return (
 
@@ -50,6 +48,7 @@ export const NewTodo = () => {
 
             </div>
             <textarea
+                autoFocus
                 value={description}
                 onChange={(e) => setDescription(e.currentTarget.value)}
                 className="bg-inherit flex w-full rounded   border-zinc-400 border-2 p-4 font-medium text-lg align-baseline pb-16"

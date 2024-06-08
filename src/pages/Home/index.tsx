@@ -2,18 +2,13 @@ import { ArrowDownNarrowWide } from "lucide-react"
 import { Card } from "./components/Card"
 import { AddButton } from "./components/ButtonAdd"
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect } from "react";
 import { useAppContext } from "../../context/AppContext";
 
 
 export const Home = () => {
     const route = useNavigate()
 
-    const { tasks, fetchTasks } = useAppContext()
-
-
-
-    console.log(tasks)
+    const { tasks, changeOrder } = useAppContext()
 
     function onNewTodo() {
         route('/new')
@@ -21,15 +16,11 @@ export const Home = () => {
     }
 
 
-
-
     return (
         <div className="px-6 pt-8 space-y-2">
             <div className="flex justify-between items-center mb-8">
-                <p className="text-4xl font-semibold">Tarefas</p>
-                <ArrowDownNarrowWide />
-
-
+                <p className="text-3xl font-extralight-">Tarefas</p>
+                <ArrowDownNarrowWide onClick={() => changeOrder()} />
 
             </div>
 
