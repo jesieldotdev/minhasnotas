@@ -1,4 +1,4 @@
-import { Check } from "lucide-react"
+import { Check, Trash } from "lucide-react"
 import { useState } from "react"
 import { Task } from "../../../../models/models"
 import dayjs from "dayjs"
@@ -39,11 +39,14 @@ export const Card = ({ todo }: CardProps) => {
                 <p className="font-semibold text-zinc-600">{todo.description}</p>
                 <p className="mt-6 text-xs text-slate-400">{dayjs(todo?.date).format(`d [de] MMMM HH:mm`)}</p>
             </div>
-            {
-                done ? <Check /> : null
-            }
+            {/* <div className="flex flex-col justify-between "> */}
+                {
+                    done ? <Check /> : null
+                }
 
+                {/* <Trash className="mt-auto w-5 h-5 text-zinc-800" /> */}
+            </div>
 
-        </div>
+        // </div>
     )
 }
