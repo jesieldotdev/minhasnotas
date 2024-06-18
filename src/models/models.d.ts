@@ -1,6 +1,6 @@
-export interface Task{
-    description: string
-    done?:boolean
-    id: number | string
-    date: string
+export interface Task {
+  title: string;
+  status?: "incomplete" | "completed";
+  id: number | string;
+  createdAt: string;
 }

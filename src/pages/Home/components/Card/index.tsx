@@ -10,7 +10,7 @@ interface CardProps {
 }
 
 export const Card = ({ todo }: CardProps) => {
-    const [done, setDone] = useState(todo.done)
+    const [done, setDone] = useState(todo.status === 'completed')
 
     async function onChangeState() {
         setDone(!done)
@@ -20,7 +20,7 @@ export const Card = ({ todo }: CardProps) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                done: !done,
+                status: !done,
             }),
         })
             .then(res => res.json())
@@ -36,16 +36,16 @@ export const Card = ({ todo }: CardProps) => {
     return (
         <div onClick={() => onChangeState()} className="flex mb-2 justify-between border-zinc-400 border-2 rounded-md p-4">
             <div>
-                <p className="font-semibold text-zinc-600">{todo.description}</p>
-                <p className="mt-6 text-xs text-slate-400">{dayjs(todo?.date).format(`d [de] MMMM HH:mm`)}</p>
+                <p className="font-semibold text-zinc-600">{todo?.title}</p>
+                <p className="mt-6 text-xs text-slate-400">{dayjs(todo?.createdAt).format(`DD [de] MMMM HH:m`)}</p>
             </div>
             {/* <div className="flex flex-col justify-between "> */}
-                {
-                    done ? <Check /> : null
-                }
+            {
+                done ? <Check /> : null
+            }
 
-                {/* <Trash className="mt-auto w-5 h-5 text-zinc-800" /> */}
-            </div>
+            {/* <Trash className="mt-auto w-5 h-5 text-zinc-800" /> */}
+        </div>
 
         // </div>
     )

@@ -20,7 +20,7 @@ export const Home = () => {
         <div className="px-6 pt-8 ">
             <div className="flex justify-between items-center mb-8">
                 <p className="text-3xl font-light">Agenda<span className="font-semibold text-slate-600">ACS</span></p>
-                <ArrowDownNarrowWide className={isReverseOrder ? 'text-green-400' : ''} onClick={() => changeOrder()} />
+                <ArrowDownNarrowWide className={isReverseOrder ? 'text-slate-600' : ''} onClick={() => changeOrder()} />
 
             </div>
 

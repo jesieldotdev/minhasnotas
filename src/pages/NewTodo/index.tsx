@@ -24,7 +24,7 @@ export const NewTodo = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ description, date: date }),
+            body: JSON.stringify({ title: description, createdAt: date }),
         })
             .then(response => response.json())
             .then(data => {
