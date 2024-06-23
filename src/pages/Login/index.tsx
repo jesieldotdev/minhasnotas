@@ -31,7 +31,7 @@ const Login: React.FC = () => {
     return (
         <form onSubmit={handleLogin} className="max-w-md mx-auto mt-12 p-6 bg-white rounded shadow-md">
             
-            <div className="flex justify-center items-center mb-8">
+            <div  className="flex justify-center items-center mb-8">
                 <p className="text-3xl font-light text-center">Agenda<span className="font-semibold text-slate-600">ACS</span></p>
 
             </div>
