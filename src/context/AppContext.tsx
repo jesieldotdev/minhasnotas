@@ -1,6 +1,8 @@
 import React, { ReactNode } from "react";
 import { createContext, useContext } from "react";
 import { Task } from "../models/models";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { auth } from "../config/firebase.config";
 
 
 
@@ -14,6 +16,9 @@ type AppContextProps = {
     fetchTasks: () => void
     changeOrder: () => void
     isReverseOrder: boolean
+    isLogging: boolean
+    user: User | undefined
+    logout: () => void
 };
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -23,6 +28,32 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const [tasks, setTasks] = React.useState<Task[]>([])
     const [isLoading, setIsLoading] = React.useState(true);
     const [isReverseOrder, setIsReverseOrder] = React.useState(true)
+    const [isLogging, setIsLogging] = React.useState(true)
+    const [user, setUser] = React.useState<User>()
+
+    function logout() {
+        try {
+            auth.signOut()
+            setUser(undefined)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    function checkUserLoggedIn() {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setIsLogging(true);
+                setUser(user);
+            } else {
+                setIsLogging(false);
+            }
+        });
+
+        return () => unsubscribe();
+    }
+
+
 
 
     async function fetchTasks() {
@@ -54,6 +85,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
         return () => clearTimeout(timeoutId);
     }, []);
 
+    React.useEffect(() => {
+        checkUserLoggedIn()
+
+    }, []);
+
 
 
     return (
@@ -64,7 +100,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
             setIsLoading,
             fetchTasks,
             changeOrder,
-            isReverseOrder
+            isReverseOrder,
+            isLogging,
+            user,
+            logout
 
         }}>
             {children}
@@ -80,5 +119,3 @@ export function useAppContext(): AppContextProps {
     }
     return context;
 }
-
-
