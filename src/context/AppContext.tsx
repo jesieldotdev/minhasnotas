@@ -27,7 +27,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
 
     async function fetchTasks() {
-        fetch('http://localhost:3000/tasks')
+        fetch(`${import.meta.env.VITE_API_URL}/tasks`)
             .then(response => response.json())
             .then(data => {
                 setTasks(isReverseOrder ? data : data.reverse());
@@ -45,7 +45,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         const timeoutId = setTimeout(() => {
         }, 2000);
 
-        fetch('http://localhost:3000/tasks')
+        fetch(`${import.meta.env.VITE_API_URL}/tasks`)
             .then(response => response.json())
             .then(data => {
                 setTasks(isReverseOrder ? data.reverse() : data);

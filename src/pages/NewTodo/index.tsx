@@ -19,7 +19,7 @@ export const NewTodo = () => {
 
     const addTodo = () => {
         if(description === '' || description === undefined) return enqueueSnackbar('O campo não pode ficar vazio!')
-        fetch('http://localhost:3000/tasks', {
+        fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -14,7 +14,7 @@ export const Card = ({ todo }: CardProps) => {
 
     async function onChangeState() {
         setDone(!done)
-        await fetch(`http://localhost:3000/tasks/${todo.id}`, {
+        await fetch(`${import.meta.env.VITE_API_URL}/${todo.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
