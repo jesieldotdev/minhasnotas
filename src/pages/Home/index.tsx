@@ -31,6 +31,10 @@ export const Home = () => {
                         key={item.id}
                     />)
             }
+
+            {
+                !tasks.length ? <p className="text-center mt-24">Nenhuma tarefa</p> : null
+            }
             </div>
 
 
