@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import { NewTodo } from './pages/NewTodo/index.tsx';
 import { AppProvider } from './context/AppContext.tsx';
+import Register from './pages/Register/index.tsx';
+import Login from './pages/Login/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
   {
     path: "/new",
     element: <NewTodo />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 
 ]);
