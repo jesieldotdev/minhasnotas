@@ -1,4 +1,4 @@
-import { Check, Trash } from "lucide-react"
+import { Check } from "lucide-react"
 import { useState } from "react"
 import { Task } from "../../../../models/models"
 import dayjs from "dayjs"

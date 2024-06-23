@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { ActionButton } from "./components/ActionButton"
 import { useAppContext } from "../../context/AppContext"
 import { enqueueSnackbar, SnackbarProvider } from "notistack"
+import { Task } from "../../models/models"
 
 export const NewTodo = () => {
     const route = useNavigate()
@@ -18,7 +19,7 @@ export const NewTodo = () => {
     const { setTasks } = useAppContext()
 
     const addTodo = () => {
-        if(description === '' || description === undefined) return enqueueSnackbar('O campo não pode ficar vazio!')
+        if (description === '' || description === undefined) return enqueueSnackbar('O campo não pode ficar vazio!')
         fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
             method: 'POST',
             headers: {
@@ -28,7 +29,7 @@ export const NewTodo = () => {
         })
             .then(response => response.json())
             .then(data => {
-                setTasks(prev => {
+                setTasks((prev: Task[]) => {
 
                     return [...prev, data]
                 })
@@ -41,11 +42,11 @@ export const NewTodo = () => {
 
     return (
 
-        
+
 
         <div className="px-6 pt-8 space-y-2 h-full">
-                <SnackbarProvider />
-               
+            <SnackbarProvider />
+
             <div className="flex justify-between items-center mb-8">
                 <p className="text-3xl font-bold text-zinc-700">Nova tarefa</p>
                 <X onClick={() => onClose()} className="w-10 h-10" />
