@@ -12,4 +12,8 @@ export default defineConfig({
       plugins: [tailwindcss()],
     },
   },
+  server: {
+    host: '0.0.0.0', // Adiciona esta linha
+    port: 5173,      // Já deve estar configurado como 5173
+  },
 })
