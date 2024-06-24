@@ -11,7 +11,7 @@ export const Home = () => {
 
     const options = ['Pendentes', 'Feitas'];
 
-    const { tasks, changeOrder, isReverseOrder, isLogging, logout } = useAppContext()
+    const { tasks, changeOrder, isReverseOrder, isLogging, logout, user } = useAppContext()
 
     React.useEffect(() => {
         if (!isLogging) route('/login')
@@ -34,7 +34,7 @@ export const Home = () => {
 
 
     return (
-        <div className="px-6 pt-6 ">
+        <div className="px-6 pt-4 ">
 
             <div className="flex justify-between items-center mb-4">
                 <p className="text-3xl font-light">Agenda<span className="font-semibold text-slate-600">ACS</span></p>
@@ -66,7 +66,7 @@ export const Home = () => {
             </div>
 
             <div className=" gap-2 lg:grid grid-cols-3">       {
-                !!tasks && tasks.map(item =>
+                !!tasks && tasks.filter(task => task.author === user?.email).map(item =>
                     <Card
                         todo={item}
                         key={item.id}
