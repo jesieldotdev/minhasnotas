@@ -15,7 +15,7 @@ export const NewTodo = () => {
     }
 
     const date = new Date()
-    const { setTasks } = useAppContext()
+    const { setTasks, user } = useAppContext()
 
     const addTodo = () => {
         if(description === '' || description === undefined) return enqueueSnackbar('O campo não pode ficar vazio!')
@@ -24,7 +24,7 @@ export const NewTodo = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ title: description, createdAt: date }),
+            body: JSON.stringify({ title: description, createdAt: date, author: user?.email }),
         })
             .then(response => response.json())
             .then(data => {

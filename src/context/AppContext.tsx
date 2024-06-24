@@ -70,7 +70,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
         await fetchTasks()
     }
 
-
     React.useEffect(() => {
         const timeoutId = setTimeout(() => {
         }, 2000);
