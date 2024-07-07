@@ -1,4 +1,4 @@
-import { Check, Trash } from "lucide-react"
+import { Archive, Check, Trash } from "lucide-react"
 import { useState } from "react"
 import { Task } from "../../../../models/models"
 import dayjs from "dayjs"
@@ -14,7 +14,7 @@ interface CardProps {
 
 
 export const Card = ({ todo }: CardProps) => {
-const { fetchTasks } = useAppContext()
+    const { fetchTasks } = useAppContext()
     const [done, setDone] = useState(todo.status === 'completed')
 
     async function onChangeState() {
@@ -53,19 +53,19 @@ const { fetchTasks } = useAppContext()
 
 
     return (
-        <div  className="flex mb-2 justify-between border-zinc-400 border-2 rounded-md p-4">
+        <div className={`flex mb-2 justify-between rounded-lg p-4 bg-white cursor-pointer ${done ? '' : ''}`}>
             <div onClick={() => onChangeState()}>
-                <p className="font-semibold text-zinc-600">{todo?.title}</p>
+                <p className={`font-semibold text-zinc-600 p-2 ${done ? `line-through` : ''}`}>{todo?.title}</p>
                 <p className="mt-6 text-xs text-slate-400">{dayjs(todo?.createdAt).format(`DD [de] MMMM HH:m`)}</p>
             </div>
             <div className="flex flex-col justify-between ">
-            {
-                done ? <Check /> : null
-            }
+                {
+                    done ? <div className="bg-iphone-blue text-iphone-white rounded-full p-1"><Check size={18} /></div> : null
+                }
 
-            <Trash onClick={() => onRemoveTask()} className="mt-auto w-5 h-5 text-zinc-800" />
-        </div>
+                        <Archive onClick={() => onRemoveTask()} className="mt-auto w-5 h-5 text-zinc-800" />
+                    </div>
 
         </div>
-    )
+            )
 }

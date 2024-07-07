@@ -1,77 +1,64 @@
-import { X } from "lucide-react"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { ActionButton } from "./components/ActionButton"
-import { useAppContext } from "../../context/AppContext"
-import { enqueueSnackbar, SnackbarProvider } from "notistack"
+import { ControllerNewTodo } from "./viewController";
+import { motion } from "framer-motion";
 
-export const NewTodo = () => {
-    const route = useNavigate()
-    const [description, setDescription] = useState(String)
+export const NewTodo = ({ onClose }) => {
+    const {
+        addTodo,
+        description,
+        setDescription,
+    } = ControllerNewTodo(
+        { onClose }
+    );
 
-    function onClose() {
-        route('/')
-        return
-    }
-
-    const date = new Date()
-    const { setTasks, user } = useAppContext()
-
-    const addTodo = () => {
-        if(description === '' || description === undefined) return enqueueSnackbar('O campo não pode ficar vazio!')
-        fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ title: description, createdAt: date, author: user?.email }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                setTasks(prev => {
-
-                    return [...prev, data]
-                })
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        onClose()
+    const handleClickOutside = (event) => {
+        if (event.target === event.currentTarget) {
+            onClose();
+        }
     };
 
     return (
+        <div
+            className="fixed inset-0 flex justify-end items-right bg-zinc-700 bg-opacity-50"
+            onClick={handleClickOutside}
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.3 }}
+                className="w-full h-full sm:max-w-lg p-4 sm:p-6 border border-gray-300 rounded-lg bg-white shadow-lg"
+            >
+                <h1 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4">Nova tarefa</h1>
+                <p className="mb-2 sm:mb-4">Descreva a tarefa que precisa ser feita</p>
 
-        
+                <input
+                    className="w-full p-2 sm:p-4 text-base sm:text-lg border border-gray-300 rounded-lg mb-2 sm:mb-4"
+                    placeholder="O que precisa ser feito?"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                />
 
-        <div className="px-6 pt-8 space-y-2 h-full">
-                <SnackbarProvider />
-               
-            <div className="flex justify-between items-center mb-8">
-                <p className="text-3xl font-bold text-zinc-700">Nova tarefa</p>
-                <X onClick={() => onClose()} className="w-10 h-10" />
+                <div className="flex flex-col justify-between">
 
 
+                    <div className="flex flex-col sm:flex-row sm:justify-between space-y-2 sm:space-y-0 sm:space-x-4">
 
-            </div>
-            <textarea
-                autoFocus
-                value={description}
-                onChange={(e) => setDescription(e.currentTarget.value)}
-                className="bg-inherit flex w-full rounded h-64  border-zinc-400 border-2 p-4 font-medium text-lg align-baseline pb-16"
-                placeholder="O que precisa ser feito?"
+                        <button
+                            onClick={() => onClose()}
+                            className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600"
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            onClick={addTodo}
+                            className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600"
+                        >
+                            Salvar
+                        </button>
 
-            />
-
-            <div className="h-4" />
-
-            {/* <div className="flex w-full h-16 p-4 border-2 border-zinc-400 rounded mt-16">
-                <p className="text-zinc-400">Escolha o dia e hora</p>
-            </div> */}
-            <ActionButton title="Salvar" onClick={() => addTodo()} />
-
+                    </div>
+                </div>
+            </motion.div>
         </div>
-
-
-
-    )
-}
+    );
+};

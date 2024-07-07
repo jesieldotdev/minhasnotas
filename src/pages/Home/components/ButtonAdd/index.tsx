@@ -7,8 +7,10 @@ interface AddButtonProps {
 
 export const AddButton = ({ onClick }: AddButtonProps) => {
     return (
-        <button onClick={()=>onClick()} className="bg-zinc-900 p-4 rounded">
-            <Plus className="text-slate-100" />
+        <button onClick={() => onClick()} className="bg-blue-sec text-iphone-blue-2 p-4 rounded-full flex gap-2 justify-center">
+            <Plus className="text-iphone-blue-2" />
+
+            <p className="font-medium">Nova Tarefa</p>
 
         </button>
     )
