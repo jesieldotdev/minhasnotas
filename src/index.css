@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  display: none;
+  }
+
 :root {
   font-family: "Montserrat", sans-serif;
   line-height: 1.5;
@@ -17,6 +21,7 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
+  
   
 }
 

@@ -11,7 +11,7 @@ const Menu = () => {
   ];
 
   return (
-    <div className="bg-white h-screen flex flex-col p-4 ">
+    <div className="bg-white h-screen flex flex-col p-4 pt-0">
       <div className="text-normal  font-normal p-4 text-zinc-500">MENU</div>
       {menuItems.map((item) => (
         <button
