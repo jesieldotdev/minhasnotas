@@ -4,10 +4,20 @@ import { Home } from './pages/Home';
 import { Header } from './pages/Home/components/Header';
 import SearchInput from './components/Search';
 import { Dock } from './components/Dock';
+import {  HeaderMobile}  from './pages/Home/components/HeaderMobile'
+import { useAppContext}  from "./context/AppContext"
 
 function App() {
+  const {logout} = useAppContext()
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [sidebarWidth, setSidebarWidth] = useState(250); // largura inicial da sidebar
+  const [isMobile, setIsMobile] = useState()
+  
+  useEffect(()=> {
+  if(window.innerWidth < 768) setIsMobile(window.innerWidth)
+  },[])
+
+
 
 
   return (
@@ -16,8 +26,9 @@ function App() {
       {/* <div className="block lg:hidden">
         <HeaderMobile logout={() => alert('')} />
       </div> */}
-
+{!isMobile ?
       <div className="flex  ">
+      {isMobile}
         <div
           className="relative"
           style={{ width: isSidebarOpen ? `${sidebarWidth}px` : '2px', background: 'bg-zinc-800' }}
@@ -40,6 +51,12 @@ function App() {
           <Home />
         </div>
       </div>
+      
+      : <>
+      <HeaderMobile onClick={logout}/>
+      <Home/>
+      </>
+}
     </>
   );
 }
