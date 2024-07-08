@@ -7,8 +7,12 @@ interface ControllerNewTodoProps {
     onClose: () => void
 }
 
-export const ControllerNewTodo = ({ onClose}:ControllerNewTodoProps) => {
+export const ControllerNewTodo = ({ onClose }: ControllerNewTodoProps) => {
+    const [title, setTitle] = useState(String)
+    const [tags, setTags] = useState<string[]>([])
     const [description, setDescription] = useState(String)
+    const [startDate, setStartDate] = useState<Date>(new Date());
+    const [endDate, setEndDate] = useState<Date>(new Date());
     const route = useNavigate()
 
 
@@ -45,7 +49,15 @@ export const ControllerNewTodo = ({ onClose}:ControllerNewTodoProps) => {
         description,
         user,
         onClose,
-        setDescription
+        setDescription,
+        title,
+        setTitle,
+        startDate,
+        endDate,
+        setStartDate,
+        setEndDate,
+        tags,
+        setTags
 
     }
 }

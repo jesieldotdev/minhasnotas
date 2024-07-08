@@ -42,7 +42,7 @@ export const Home = () => {
          
             {/* <TabComponent/> */}
 
-            <div className=" px-6 pt-4 bg-[#f9f9f9] h-screen flex flex-col">
+            <div className=" px-4 pt-4 bg-[#f9f9f9] h-screen flex flex-col">
 
                 <Actions
                     selectedOptions={selectedOptions}

@@ -53,7 +53,7 @@ export const Card = ({ todo }: CardProps) => {
 
 
     return (
-        <div className={`flex mb-2 justify-between rounded-lg p-4 bg-white cursor-pointer ${done ? '' : ''}`}>
+        <div className={`flex mb-2 justify-between rounded-lg p-4 m-1 bg-white cursor-pointer shadow-sm  ${done ? '' : ''}`}>
             <div onClick={() => onChangeState()}>
                 <p className={`font-semibold text-zinc-600 p-2 ${done ? `line-through` : ''}`}>{todo?.title}</p>
                 <p className="mt-6 text-xs text-slate-400">{dayjs(todo?.createdAt).format(`DD [de] MMMM HH:m`)}</p>
