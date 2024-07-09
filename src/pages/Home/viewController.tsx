@@ -11,7 +11,9 @@ export const ControllerHome = () => {
 
     const {
         activeTab,
-        searchText
+        searchText,
+        isSidebarOpen,
+        setIsSidebarOpen
     } = useAppContext()
 
     const route = useNavigate()
@@ -41,12 +43,14 @@ export const ControllerHome = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+
     const handleNewTodo = () => {
         setIsModalOpen(true);
     };
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
+        setIsSidebarOpen(false);
     };
 
 
@@ -97,7 +101,9 @@ export const ControllerHome = () => {
         getTasks,
         handleNewTodo,
         isModalOpen,
-        isLoading
+        isLoading,
+        setIsSidebarOpen,
+        isSidebarOpen
 
     }
 }

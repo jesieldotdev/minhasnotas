@@ -13,6 +13,8 @@ type AppContextProps = {
     setTasks: (t: Task[]) => void
     isLoading: boolean
     setIsLoading: (b: boolean) => void
+    isSidebarOpen: boolean
+    setIsSidebarOpen: (b: boolean) => void
     fetchTasks: () => void
     changeOrder: () => void
     isReverseOrder: boolean
@@ -38,6 +40,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const [user, setUser] = React.useState<User>()
     const [activeTab, setActiveTab] = React.useState<'all' | 'pendents' | 'completed'>('all');
     const [searchText, setSearchText] = React.useState<string>('')
+    const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
     function logout() {
         try {
@@ -135,7 +138,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
             setActiveTab,
             searchText,
             setSearchText,
-            quantities
+            quantities,
+            isSidebarOpen,
+            setIsSidebarOpen
         }}>
             {children}
         </AppContext.Provider>

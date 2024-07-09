@@ -27,7 +27,7 @@ export const Card = ({ todo }: CardProps) => {
         <div className={`mb-2 justify-between rounded-lg p-4 m-1 bg-white cursor-pointer shadow-sm h-fit ${done ? '' : ''}`}>
 
             <div className="flex justify-between ">
-                <p className="bg-blue-sec p-1 px-2 rounded-lg text-xs font-bold text-iphone-blue-2">Estudos</p>
+                <p className="bg-blue-sec p-1 px-2 rounded-lg text-xs font-bold text-iphone-blue-2">Tarefa</p>
                 <button>
                     <Ellipsis /></button>
             </div>
