@@ -62,7 +62,7 @@ export const Home = () => {
                     }
                     {!isLoading && !getTasks().length ? <p className="text-center mt-24">Nenhuma tarefa</p> : null}
                 </div>
-                <div className="absolute bottom-4 right-4 font-bold py-2 px-4 rounded">
+                <div className="fixed bottom-4 right-4 font-bold py-2 px-4 rounded">
                     <AddButton onClick={handleNewTodo} />
                 </div>
                 <AnimatePresence>

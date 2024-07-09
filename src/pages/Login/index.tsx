@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../config/firebase.config';
 import { useAppContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
+import { Header } from '../Home/components/Header';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -30,10 +31,10 @@ const Login: React.FC = () => {
 
     return (
         <form onSubmit={handleLogin} className="max-w-md mx-auto mt-12 p-6 bg-white rounded shadow-md">
-            
-            <div  className="flex justify-center items-center mb-8">
-                <p className="text-3xl font-light text-center">Agenda<span className="font-semibold text-slate-600">ACS</span></p>
 
+            <div className="flex justify-center items-center mb-8">
+
+                <Header />
             </div>
             <h2 className="text-2xl font-bold mb-6">Entrar</h2>
             <div className="mb-4">
@@ -58,7 +59,7 @@ const Login: React.FC = () => {
                 Login
             </button>
 
-            <button onClick={()=> route('/register')} className='text-blue-800 mt-4 text-center justify-center'>Registrar</button>
+            <button onClick={() => route('/register')} className='text-blue-800 mt-4 text-center justify-center'>Registrar</button>
         </form>
     );
 };

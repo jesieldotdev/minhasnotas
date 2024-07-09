@@ -1,9 +1,13 @@
+import { useAppContext } from '../../../../context/AppContext';
 import { Cog, FolderOpenDot, LayoutDashboard, LogOut } from 'lucide-react';
 import React, { useState } from 'react';
 
 const Menu = () => {
-  const [activeItem, setActiveItem] = useState('dashboard'); 
-  const [generalItem, setGeneralItem] = useState('settings'); 
+  const [activeItem, setActiveItem] = useState('dashboard');
+  const [generalItem, setGeneralItem] = useState('settings');
+  const {
+    logout
+  } = useAppContext()
 
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: < LayoutDashboard /> },
@@ -11,8 +15,8 @@ const Menu = () => {
   ];
 
   const general = [
-    { id: 'settings', label: 'Configurações', icon: < Cog /> },
-    { id: 'logout', label: 'Deslogar', icon: < LogOut /> },
+    { id: 'settings', label: 'Configurações', icon: < Cog />, callback: setActiveItem },
+    { id: 'logout', label: 'Deslogar', icon: < LogOut />, callback: logout },
   ];
 
   return (
@@ -40,14 +44,14 @@ const Menu = () => {
             key={item.id}
             className={`flex items-center font-semibold p-4 rounded w-full ${activeItem === item.id ? 'bg-blue-sec text-iphone-blue border-r-2' : 'text-zinc-500'
               }`}
-              onClick={() => setActiveItem(item.id)}
+            onClick={() => item.callback(item.id)}
           >
             {item.icon}
             <span className="ml-2 ">{item.label}</span>
           </button>
         ))}
       </div>
-     </div>
+    </div>
   );
 };
 
