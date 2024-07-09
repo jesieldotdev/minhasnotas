@@ -53,30 +53,30 @@ export const ControllerHome = () => {
     function getTasks() {
         if (!tasks) return [];
 
-        let filterByUser = tasks.filter(task => task.author === user?.email);
+        let filter = tasks
 
         switch (activeTab) {
             case 'all':
                 break;
             case 'pendents':
-                filterByUser = filterByUser.filter(item => item.status === 'incomplete');
+                filter = filter.filter(item => item.status === 'incomplete');
                 break;
             case 'completed':
-                filterByUser = filterByUser.filter(item => item.status === 'completed');
+                filter = filter.filter(item => item.status === 'completed');
                 break;
             default:
                 break;
         }
 
         if (searchText) {
-            filterByUser = filterByUser.filter(item =>
+            filter = filter.filter(item =>
                 item.title.toLowerCase().includes(searchText.toLowerCase()) ||
                 item.description.toLowerCase().includes(searchText.toLowerCase()) ||
                 item.tags.some(tag => tag.toLowerCase().includes(searchText.toLowerCase()))
             );
         }
 
-        return filterByUser;
+        return filter;
     }
 
 

@@ -18,7 +18,8 @@ export const Card = ({ todo }: CardProps) => {
     const {
         done,
         onChangeState,
-        onRemoveTask
+        onRemoveTask,
+        tagSearch
     } = ControllerCard({ todo })
 
 
@@ -31,13 +32,13 @@ export const Card = ({ todo }: CardProps) => {
                     <Ellipsis /></button>
             </div>
 
-            <div onClick={() => onChangeState()}>
-                <p className={`font-bold text-lg text-zinc-600 p-2  ${done ? `line-through` : ''}`}>{todo?.title}</p>
+            <div >
+                <p onClick={() => onChangeState()} className={`font-bold text-lg text-zinc-600 p-2  ${done ? `line-through` : ''}`}>{todo?.title}</p>
                 <p className={`font-normal text-zinc-600 p-2 whitespace-normal overflow-hidden  ${done ? `line-through` : ''}`}>
                     {todo?.description}
                 </p>
 
-                <div className={`font-normal text-sm  p-2 overflow-ellipsis text-green-400 `}>{todo?.tags.map(item => <div key={item}><a className="underline " >#{item}</a><br /></div>)}</div>
+                <div className={`font-normal text-sm  p-2 overflow-ellipsis text-green-400 `}>{todo?.tags.map(item => <div key={item}><button onClick={() => tagSearch(item)} className="underline " >#{item}</button><br /></div>)}</div>
             </div>
 
             <div className="flex flex-row justify-between border-t mt-4 pt-2">

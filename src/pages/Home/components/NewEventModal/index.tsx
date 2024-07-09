@@ -17,7 +17,7 @@ export function NewEventModal() {
         <Button onClick={() => setIsOpen(true)}>Show drawer</Button>
       </div>
       <Drawer open={isOpen} onClose={handleClose}>
-        <Drawer.Header title="NEW EVENT" titleIcon={HiCalendar} />
+        <p className="font-bold" title="NEW EVENT"/>
         <Drawer.Items>
           <form action="#">
             <div className="mb-6 mt-3">

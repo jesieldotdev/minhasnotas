@@ -47,7 +47,7 @@ export const NewTodo = ({ onClose }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
-                className="w-full h-full sm:max-w-lg p-4 sm:p-6 bg-white rounded-3xl shadow-2xl"
+                className="w-full h-full sm:max-w-lg p-4 sm:p-6 bg-white rounded-3xl rounded-r-none shadow-2xl "
             >
                 {isMobile ? (
                     <NewTaskMobile

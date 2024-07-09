@@ -39,21 +39,20 @@ export const NewTaskModalDesktop = ({
         <>
             <div className="flex justify-between">
                 <div className="flex">
-                    <Calendar />
-                    <p className="text-lg ml-2 font-medium mb-2 sm:mb-4 uppercase">Nova tarefa</p>
+                    <p className="text-lg text-zinc-600 font-extrabold mb-2 sm:mb-4 uppercase">Nova tarefa</p>
                 </div>
                 <button onClick={() => onClose()}><X /></button>
             </div>
-            <p className="mb-2">Título</p>
+            <p className="mb-2 font-bold text-zinc-600">Título</p>
             <input
-                className="w-full p-4 text-lg border border-gray-300 rounded-lg mb-4"
+                className="w-full p-4 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
                 placeholder="Estudar direito constitucional"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-            <p className="mb-2">Descrição</p>
+            <p className="mb-2 font-bold text-zinc-600">Descrição</p>
             <textarea
-                className="w-full p-4 text-lg border border-gray-300 rounded-lg mb-4"
+                className="w-full p-4 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
                 placeholder="Escreva a descrição da tarefa"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}

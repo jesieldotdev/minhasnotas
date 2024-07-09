@@ -23,6 +23,7 @@ type AppContextProps = {
     setActiveTab: React.Dispatch<SetStateAction<'all' | 'pendents' | 'completed'>>
     searchText: string
     setSearchText: React.Dispatch<SetStateAction<string>>
+    quantities: { value: string, qtt: number }[]
 };
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -30,6 +31,7 @@ const AppContext = createContext<AppContextProps | undefined>(undefined);
 export function AppProvider({ children }: { children: ReactNode }) {
 
     const [tasks, setTasks] = React.useState<Task[]>([])
+    const [quantities, setQuantities] = React.useState<{ value: string, qtt: number }[]>([])
     const [isLoading, setIsLoading] = React.useState(true);
     const [isReverseOrder, setIsReverseOrder] = React.useState(true)
     const [isLogging, setIsLogging] = React.useState(true)
@@ -66,7 +68,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         fetch(`${import.meta.env.VITE_API_URL}/tasks`)
             .then(response => response.json())
             .then(data => {
-                setTasks(isReverseOrder ? data : data.reverse());
+                const tasks = data.filter((task: Task) => task.author === user?.email);
+                setTasks(isReverseOrder ? tasks : tasks.reverse());
                 setIsLoading(false);
             });
     }
@@ -84,7 +87,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
             .then(response => response.json())
             .then(data => {
                 setTasks(isReverseOrder ? data.reverse() : data);
-                setIsLoading(false); // Certifique-se de definir isLoading como false após os dados serem carregados
+                setIsLoading(false);
             });
 
         return () => clearTimeout(timeoutId);
@@ -93,7 +96,26 @@ export function AppProvider({ children }: { children: ReactNode }) {
     React.useEffect(() => {
         checkUserLoggedIn()
 
-    }, []);
+        // if (activeTab === 'completed') {
+            const completed = tasks.filter(item => item.status === 'completed').length
+            const pendents = tasks.filter(item => item.status === 'incomplete').length
+            console.log(pendents)
+            console.log(completed)
+            console.log(tasks)
+            setQuantities([
+                {
+                    value: 'completed',
+                    qtt: completed
+                },
+                {
+                    value: 'pendents',
+                    qtt: pendents
+                }
+            ])
+
+        // }
+
+    }, [tasks]);
 
 
 
@@ -112,8 +134,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
             activeTab,
             setActiveTab,
             searchText,
-            setSearchText
-
+            setSearchText,
+            quantities
         }}>
             {children}
         </AppContext.Provider>

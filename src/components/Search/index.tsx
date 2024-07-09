@@ -17,6 +17,7 @@ const SearchInput = ({ className }: SearchInputProps) => {
         <SearchIcon className="text-gray-500" size="20" />
       </div>
       <input
+
         value={searchText}
         onChange={(e) => setSearchText(e.currentTarget.value)}
         type="search"
