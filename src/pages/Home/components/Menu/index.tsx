@@ -27,12 +27,12 @@ const Menu = () => {
     }
   };
 
-  const flashCardsNavigate = () => {
-    navigate('/flashcards');
-  };
 
   const dashboardNavigate = () => {
     navigate('/');
+  };
+  const flashCardsNavigate = () => {
+    navigate('/flashcards');
   };
   const settingsNavigate = () => {
     navigate('/settings');
