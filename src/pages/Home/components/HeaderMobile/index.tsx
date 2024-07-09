@@ -1,18 +1,20 @@
 import React from "react"
 import SearchInput from "../../../../components/Search"
-import {Menu, Search } from "lucide-react"
+import { Menu, Search } from "lucide-react"
 import { useAppContext } from "../../../../context/AppContext"
 
 interface HeaderProps {
-    logout: () => void
     className?: string
 }
 
 export const HeaderMobile = ({ logout, className }: HeaderProps) => {
     const [showSearchInput, setShowSearchInput] = React.useState<boolean>(false)
     const {
+        isSidebarOpen,
         setIsSidebarOpen
     } = useAppContext()
+
+    console.log(isSidebarOpen)
 
     return (
         <>  <header className={`flex justify-between items-center mb-0 border-b p-4  ${className}`}>
@@ -22,7 +24,6 @@ export const HeaderMobile = ({ logout, className }: HeaderProps) => {
                     <Menu onClick={() => setIsSidebarOpen(true)} className="" />
                 </button>
 
-                {/* <div className="flex w-full  "> */}
 
                 {
                     showSearchInput ? <SearchInput className="" /> :
