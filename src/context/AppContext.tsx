@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, SetStateAction } from "react";
 import { createContext, useContext } from "react";
 import { Task } from "../models/models";
 import { onAuthStateChanged, User } from "firebase/auth";
@@ -19,6 +19,10 @@ type AppContextProps = {
     isLogging: boolean
     user: User | undefined
     logout: () => void
+    activeTab: 'all' | 'pendents' | 'completed'
+    setActiveTab: React.Dispatch<SetStateAction<'all' | 'pendents' | 'completed'>>
+    searchText: string
+    setSearchText: React.Dispatch<SetStateAction<string>>
 };
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -30,6 +34,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const [isReverseOrder, setIsReverseOrder] = React.useState(true)
     const [isLogging, setIsLogging] = React.useState(true)
     const [user, setUser] = React.useState<User>()
+    const [activeTab, setActiveTab] = React.useState<'all' | 'pendents' | 'completed'>('all');
+    const [searchText, setSearchText] = React.useState<string>('')
 
     function logout() {
         try {
@@ -102,7 +108,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
             isReverseOrder,
             isLogging,
             user,
-            logout
+            logout,
+            activeTab,
+            setActiveTab,
+            searchText,
+            setSearchText
 
         }}>
             {children}

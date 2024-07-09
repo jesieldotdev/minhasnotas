@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
 import React, { useState } from "react";
+import { Task } from "@/models/models";
 
 interface ControllerHomeProps {
 
@@ -8,11 +9,16 @@ interface ControllerHomeProps {
 
 export const ControllerHome = () => {
 
+    const {
+        activeTab,
+        searchText
+    } = useAppContext()
+
     const route = useNavigate()
 
     const options = ['Pendentes', 'Feitas'];
 
-    const { tasks, changeOrder, isReverseOrder, isLogging, logout, user } = useAppContext()
+    const { tasks, changeOrder, isReverseOrder, isLogging, logout, user, isLoading } = useAppContext()
 
     React.useEffect(() => {
         if (!isLogging) route('/login')
@@ -33,6 +39,51 @@ export const ControllerHome = () => {
         }
     }
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleNewTodo = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+
+    function getTasks() {
+        if (!tasks) return [];
+
+        let filterByUser = tasks.filter(task => task.author === user?.email);
+
+        switch (activeTab) {
+            case 'all':
+                break;
+            case 'pendents':
+                filterByUser = filterByUser.filter(item => item.status === 'incomplete');
+                break;
+            case 'completed':
+                filterByUser = filterByUser.filter(item => item.status === 'completed');
+                break;
+            default:
+                break;
+        }
+
+        if (searchText) {
+            filterByUser = filterByUser.filter(item =>
+                item.title.toLowerCase().includes(searchText.toLowerCase()) ||
+                item.description.toLowerCase().includes(searchText.toLowerCase()) ||
+                item.tags.some(tag => tag.toLowerCase().includes(searchText.toLowerCase()))
+            );
+        }
+
+        return filterByUser;
+    }
+
+
+
+
+
+
     return {
         tasks,
         changeOrder,
@@ -41,7 +92,12 @@ export const ControllerHome = () => {
         user, toggleOption,
         onNewTodo,
         options,
-        selectedOptions
+        selectedOptions,
+        handleCloseModal,
+        getTasks,
+        handleNewTodo,
+        isModalOpen,
+        isLoading
 
     }
 }

@@ -1,4 +1,5 @@
 import { ArrowDownNarrowWide } from "lucide-react"
+import TabComponent from "../Tabs"
 
 interface ActionsProps {
     options: string[]
@@ -17,7 +18,9 @@ export const Actions = ({
  }: ActionsProps) => {
     return (
         <div className="flex justify-between mb-4 ">
-            <div className="flex flex-wrap gap-2">
+            <TabComponent/>
+
+            {/* <div className="flex flex-wrap gap-2">
                 {options.map((option, index) => (
                     <div
                         key={index}
@@ -28,7 +31,8 @@ export const Actions = ({
                         {option}
                     </div>
                 ))}
-            </div>
+            </div> */}
+
             <button onClick={() => changeOrder()}> <ArrowDownNarrowWide
                 className={isReverseOrder ? 'text-slate-600' : ''}
             /></button>

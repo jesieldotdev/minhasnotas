@@ -41,6 +41,7 @@ export const NewTodo = ({ onClose }) => {
             className="fixed inset-0 flex justify-end items-right bg-black bg-opacity-40 "
             onClick={handleClickOutside}
         >
+            
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}

@@ -21,7 +21,7 @@ export const ControllerNewTodo = ({ onClose }: ControllerNewTodoProps) => {
     const { setTasks, user } = useAppContext()
 
     const addTodo = () => {
-        if (description === '' || description === undefined) return enqueueSnackbar('O campo não pode ficar vazio!')
+        if (title === '' || title === undefined) return enqueueSnackbar('Dê um titulo pra sua tarefa! 👍')
         fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
             method: 'POST',
             headers: {
