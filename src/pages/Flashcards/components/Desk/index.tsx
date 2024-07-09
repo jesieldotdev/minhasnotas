@@ -12,7 +12,7 @@ export const Desk = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center p-6 min-h-screen bg-gray-100 z-1">
             <AnimatePresence>
                 {!isFlipped ? (
                     <motion.div
@@ -29,7 +29,7 @@ export const Desk = () => {
                             <p className="bg-blue-sec text-iphone-blue border-2 rounded-md py-1 px-2 text-sm font-semibold">
                                 Direito Constitucional
                             </p>
-                            {/* <button className="font-bold text-zinc-600">Editar</button> */}
+                            <button className="font-bold text-blue-700">Editar</button>
                         </div>
 
                         <div className="flex-1 mb-32 justify-center">

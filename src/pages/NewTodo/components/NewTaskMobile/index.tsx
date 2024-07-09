@@ -36,7 +36,7 @@ export const NewTaskMobile = ({
 
 }: NewTaskMobileDesktopProps) => {
     return (
-        <div className="h-full flex flex-col justify-between">
+        <div className="h-full flex flex-col justify-between z-10">
         <div>
             <div className="flex justify-between mb-4">
                 <button className="p-2 rounded-full bg-white border border-gray-300" onClick={() => onClose()}>

@@ -38,7 +38,7 @@ export const NewTodo = ({ onClose }) => {
 
     return (
         <div
-            className="fixed inset-0 flex justify-end items-right bg-black bg-opacity-40 "
+            className="fixed inset-0 flex justify-end items-right bg-black bg-opacity-40 z-10"
             onClick={handleClickOutside}
         >
             

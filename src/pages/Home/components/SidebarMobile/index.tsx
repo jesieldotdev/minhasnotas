@@ -12,7 +12,7 @@ export const SidebarMobile = ({ onClose }: SidebarMobileProps) => {
   
     return (
         <div
-            className="fixed inset-0 flex justify-start items-right bg-black bg-opacity-40 overflow-y-scroll"
+            className="fixed inset-0 flex justify-start items-right bg-black bg-opacity-40 overflow-y-scroll z-10"
             onClick={onClose}
         >
             
