@@ -27,7 +27,17 @@ export const ControllerNewTodo = ({ onClose }: ControllerNewTodoProps) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ title: description, createdAt: date, author: user?.email }),
+            body: JSON.stringify({ 
+                title: title, 
+                description: description, 
+                createdAt: date, 
+                author: user?.email,
+                startDate: startDate,
+                endDate: startDate,
+                tags: tags
+
+
+            }),
         })
             .then(response => response.json())
             .then(data => {

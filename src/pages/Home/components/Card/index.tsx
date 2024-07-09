@@ -53,19 +53,24 @@ export const Card = ({ todo }: CardProps) => {
 
 
     return (
-        <div className={`flex mb-2 justify-between rounded-lg p-4 m-1 bg-white cursor-pointer shadow-sm  ${done ? '' : ''}`}>
+        <div className={`flex mb-2 justify-between rounded-lg p-4 m-1 bg-white cursor-pointer shadow-sm h-fit ${done ? '' : ''}`}>
             <div onClick={() => onChangeState()}>
-                <p className={`font-semibold text-zinc-600 p-2 ${done ? `line-through` : ''}`}>{todo?.title}</p>
-                <p className="mt-6 text-xs text-slate-400">{dayjs(todo?.createdAt).format(`DD [de] MMMM HH:m`)}</p>
+                <p className={`font-semibold text-zinc-600 p-2  ${done ? `line-through` : ''}`}>{todo?.title}</p>
+                <p className="font-normal text-zinc-600 p-2 whitespace-normal overflow-hidden">
+                    {todo?.description}
+                </p>
+
+                <div className={`font-normal text-sm  p-2 overflow-ellipsis text-green-400 ${done ? `line-through` : ''}`}>{todo?.tags.map(item => <p>#{item}</p>)}</div>
+                <p className="mt-6 text-xs text-slate-400">{dayjs(todo?.startDate).format(`DD [de] MMMM HH:m`)}</p>
             </div>
             <div className="flex flex-col justify-between ">
                 {
                     done ? <div className="bg-iphone-blue text-iphone-white rounded-full p-1"><Check size={18} /></div> : null
                 }
 
-                        <Archive onClick={() => onRemoveTask()} className="mt-auto w-5 h-5 text-zinc-800" />
-                    </div>
+                <Archive onClick={() => onRemoveTask()} className="mt-auto w-5 h-5 text-zinc-800" />
+            </div>
 
         </div>
-            )
+    )
 }
