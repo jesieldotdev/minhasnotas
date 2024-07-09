@@ -27,10 +27,10 @@ export const ControllerNewTodo = ({ onClose }: ControllerNewTodoProps) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ 
-                title: title, 
-                description: description, 
-                createdAt: date, 
+            body: JSON.stringify({
+                title: title,
+                description: description,
+                createdAt: date,
                 author: user?.email,
                 startDate: startDate,
                 endDate: startDate,

@@ -6,8 +6,6 @@ import SearchInput from './components/Search';
 import { Dock } from './components/Dock';
 import { HeaderMobile } from './pages/Home/components/HeaderMobile'
 import { useAppContext } from "./context/AppContext"
-import Lottie from 'react-lottie-player';
-import Loading from './assets/loading.json'
 
 function App() {
   const { logout } = useAppContext()
