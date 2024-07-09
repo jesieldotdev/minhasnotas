@@ -9,17 +9,7 @@ interface SidebarMobileProps {
 }
 
 export const SidebarMobile = ({ onClose }: SidebarMobileProps) => {
-    const [activeItem, setActiveItem] = React.useState('dashboard'); 
-    const [generalItem, setGeneralItem] = React.useState('settings'); 
   
-    const menuItems = [
-      { id: 'dashboard', label: 'Dashboard', icon: < LayoutDashboard /> },
-      { id: 'collections', label: 'Coleções', icon: <FolderOpenDot /> },
-    ];
-  
-    const general = [
-      { id: 'settings', label: 'Configurações', icon: < Cog /> },
-    ];
     return (
         <div
             className="fixed inset-0 flex justify-start items-right bg-black bg-opacity-40 overflow-y-scroll"
