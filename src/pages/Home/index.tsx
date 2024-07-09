@@ -20,7 +20,6 @@ export const Home = () => {
         isModalOpen,
         handleCloseModal,
         isLoading,
-        isSidebarOpen,
     } = ControllerHome();
 
 
@@ -31,12 +30,10 @@ export const Home = () => {
         <div className="border-l">
 
             <AnimatePresence>
-                {isSidebarOpen && (
-                    <SidebarMobile onClose={handleCloseModal} />
-
+                {isModalOpen && (
+                    <NewTodo onClose={handleCloseModal} />
                 )}
             </AnimatePresence>
-
 
             <div className=" px-4 pt-4 bg-[#f9f9f9] h-screen flex flex-col">
 
@@ -65,11 +62,7 @@ export const Home = () => {
                 <div className="fixed bottom-4 right-4 font-bold py-2 px-4 rounded">
                     <AddButton onClick={handleNewTodo} />
                 </div>
-                <AnimatePresence>
-                    {isModalOpen && (
-                        <NewTodo onClose={handleCloseModal} />
-                    )}
-                </AnimatePresence>
+
             </div>  </div>
     );
 };

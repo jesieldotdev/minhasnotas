@@ -37,7 +37,7 @@ export const NewTaskModalDesktop = ({
 }: NewTaskModalDesktopProps) => {
     return (
         <>
-            <div className="flex justify-between">
+            <div className="flex justify-between z-10">
                 <div className="flex">
                     <p className="text-lg text-zinc-600 font-extrabold mb-2 sm:mb-4 uppercase">Nova tarefa</p>
                 </div>
