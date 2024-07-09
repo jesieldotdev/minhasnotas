@@ -10,6 +10,7 @@ import { NewTodo } from './pages/NewTodo/index.tsx';
 import { AppProvider } from './context/AppContext.tsx';
 import Register from './pages/Register/index.tsx';
 import Login from './pages/Login/index.tsx';
+import { SnackbarProvider } from 'notistack';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/new",
-    element: <NewTodo />,
+    element: <NewTodo onClose={undefined} />,
   },
   {
     path: "/register",
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AppProvider>
+      <SnackbarProvider/>
       <RouterProvider router={router} />
     </AppProvider>
   </React.StrictMode>,

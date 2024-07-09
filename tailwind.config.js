@@ -9,6 +9,12 @@ export default {
       fontFamily: {
         'sans': ['Poppins', 'sans-serif'],
       },
+      colors:{
+        'iphone-blue': '#0760fb',
+        'iphone-blue-2': '#035bfb',
+        'iphone-white': '#ebf2fe',
+        'blue-sec': '#e2ebfa'
+      }
     },
   },
   plugins: [],
