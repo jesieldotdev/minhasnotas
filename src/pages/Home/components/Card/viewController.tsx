@@ -10,8 +10,12 @@ export const ControllerCard = ({
     todo
 }:ControllerCardProps) => {
 
-    const { fetchTasks } = useAppContext()
+    const { fetchTasks, setSearchText } = useAppContext()
     const [done, setDone] = useState(todo.status === 'completed')
+
+    function tagSearch(item: string){
+        setSearchText(item)
+    }
 
     async function onChangeState() {
         setDone(!done)
@@ -27,7 +31,7 @@ export const ControllerCard = ({
             .then(res => res.json())
             .then(json => console.log(json))
             .catch(error => console.error('Erro ao atualizar os dados:', error));
-        return
+        return fetchTasks()
     }
 
     async function onRemoveTask() {
@@ -50,7 +54,7 @@ export const ControllerCard = ({
     return {
         onRemoveTask,
         onChangeState,
-        done
-        
+        done,
+        tagSearch
     }
 }

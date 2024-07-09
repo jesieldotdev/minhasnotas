@@ -43,11 +43,11 @@ export const NewTodo = ({ onClose }) => {
         >
             
             <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.3 }}
-                className="w-full h-full sm:max-w-lg p-4 sm:p-6 bg-white rounded-3xl shadow-2xl"
+               initial={{ x: "100%" }}
+               animate={{ x: 0 }}
+               exit={{ x: "100%" }}
+               transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="w-full h-full sm:max-w-lg p-4 sm:p-6 bg-white rounded-3xl rounded-r-none shadow-2xl "
             >
                 {isMobile ? (
                     <NewTaskMobile

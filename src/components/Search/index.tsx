@@ -17,10 +17,11 @@ const SearchInput = ({ className }: SearchInputProps) => {
         <SearchIcon className="text-gray-500" size="20" />
       </div>
       <input
+
         value={searchText}
         onChange={(e) => setSearchText(e.currentTarget.value)}
         type="search"
-        placeholder="Achar a sua tarefa..."
+        placeholder="Procurar por tarefa..."
         className="bg-white h-10 pl-10 pr-5 rounded-full text-sm focus:outline-none"
       />
     </div>

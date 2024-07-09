@@ -18,9 +18,9 @@ const DateRangePicker = ({
 
 
     return (
-        <div className=" bg-white justify-between  flex">
+        <div className=" bg-white justify-between  flex w-full">
             <DatePicker label="Data Inicial" date={startDate} setDate={setStartDate} />
-            <DatePicker label="Data Final" date={endDate} setDate={setEndDate} />
+            <DatePicker className='text-right' label="Data Final" date={endDate} setDate={setEndDate} />
         </div>
     );
 };

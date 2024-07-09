@@ -10,7 +10,7 @@ export const AddButton = ({ onClick }: AddButtonProps) => {
         <button onClick={() => onClick()} className="bg-blue-sec text-iphone-blue-2 p-4 rounded-full flex gap-2 justify-center">
             <Plus className="text-iphone-blue-2" />
 
-            <p className="font-medium">Nova Tarefa</p>
+            <p className="font-bold">Nova Tarefa</p>
 
         </button>
     )

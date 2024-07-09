@@ -33,7 +33,7 @@ const TagComponent = ({
                     placeholder="Adicionar tag"
                     className="flex-grow p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <button type="submit" className="p-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">Okay</button>
+                <button type="submit" className="p-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">Adicionar</button>
             </form>
             <div className="flex flex-wrap gap-2">
                 {tags.map((tag, index) => (

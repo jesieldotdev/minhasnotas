@@ -48,6 +48,7 @@ function App() {
 
               <Dock />
             </header>
+            
 
             <Home />
           </div>

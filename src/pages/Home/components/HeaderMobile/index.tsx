@@ -1,4 +1,7 @@
-import { HeartPulse, LogOut } from "lucide-react"
+import React from "react"
+import SearchInput from "../../../../components/Search"
+import {Menu, Search } from "lucide-react"
+import { useAppContext } from "../../../../context/AppContext"
 
 interface HeaderProps {
     logout: () => void
@@ -6,16 +9,34 @@ interface HeaderProps {
 }
 
 export const HeaderMobile = ({ logout, className }: HeaderProps) => {
+    const [showSearchInput, setShowSearchInput] = React.useState<boolean>(false)
+    const {
+        setIsSidebarOpen
+    } = useAppContext()
+
     return (
-        <>  <header className={`flex justify-between items-center mb-0 border-b p-4 ${className}`}>
-            <div className={`flex items-center  gap-2 ${className}`}>
-                <div className="bg-blue-sec p-2 rounded">
-                    <HeartPulse className="min-h-6 min-w-6 text-iphone-blue-2 " />
-                </div>
-                <p className="text-xl font-light">Agenda<span className="font-semibold text-slate-600">ACS</span></p>
-                {/* <button onClick={() => logout()}><LogOut /></button> */}
+        <>  <header className={`flex justify-between items-center mb-0 border-b p-4  ${className}`}>
+            <div className={`flex items-center  justify-between gap-2 ${className} w-full`}>
+
+                <button className=" p-2 rounded">
+                    <Menu onClick={() => setIsSidebarOpen(true)} className="" />
+                </button>
+
+                {/* <div className="flex w-full  "> */}
+
+                {
+                    showSearchInput ? <SearchInput className="" /> :
+
+                        <div className="flex justify-between w-full ">
+
+
+                            <p className="text-xl font-light">Organize<span className="font-semibold text-slate-600">GO</span></p>
+                            <button className="ml-auto px-2" onClick={() => setShowSearchInput(true)}><Search /></button>
+
+                        </div>
+                }
+                {/* </div> */}
             </div>
-            <button onClick={() => logout()}><LogOut /></button>
         </header>
 
         </>
