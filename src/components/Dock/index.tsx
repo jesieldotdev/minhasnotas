@@ -22,7 +22,7 @@ export const Dock = () => {
 
   return (
     <div className="flex justify-between items-center border-spacing-y-1">
-      <div className="text-right p-1 leading-none border-r mr-2">
+      <div className="text-right p-1 leading-none border-r pr-2 mr-2">
         <p className="text-zinc-800 font-bold text-lg">{format(currentTime, 'HH:mm:ss')}</p>
         <p className="text-sm text-gray-500 first-letter:capitalize">{formattedDate}</p>
       </div>

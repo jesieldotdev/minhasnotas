@@ -39,8 +39,8 @@ const Menu = () => {
   };
 
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard />, callback: dashboardNavigate },
-    { id: 'flashcards', label: 'Flashcards', icon: <FolderOpenDot />, callback: flashCardsNavigate },
+    { id: 'dashboard', label: 'Tarefas', icon: <LayoutDashboard />, callback: dashboardNavigate },
+    // { id: 'flashcards', label: 'Flashcards', icon: <FolderOpenDot />, callback: flashCardsNavigate },
   ];
 
   const general = [
