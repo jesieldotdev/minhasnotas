@@ -29,7 +29,6 @@ export const ControllerCard = ({
             }),
         })
             .then(res => res.json())
-            .then(json => console.log(json))
             .catch(error => console.error('Erro ao atualizar os dados:', error));
         return fetchTasks()
     }
@@ -43,7 +42,6 @@ export const ControllerCard = ({
             },
         })
             .then(res => res.json())
-            .then(json => console.log(json))
             .catch(error => console.error('Erro ao atualizar os dados:', error));
         fetchTasks()
     }

@@ -14,8 +14,6 @@ const {
         { id: 'completed', label: "Completadas", qtt: 0 },
     ];
 
-    console.log(quantities.find(item => item.value === 'completed'))
-
     return (
         <div className="flex">
             {tabData.map((tab) => (

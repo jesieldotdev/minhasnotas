@@ -14,7 +14,6 @@ export const HeaderMobile = ({ logout, className }: HeaderProps) => {
         setIsSidebarOpen
     } = useAppContext()
 
-    console.log(isSidebarOpen)
 
     return (
         <>  <header className={`flex justify-between items-center mb-0 border-b p-4  ${className}`}>
