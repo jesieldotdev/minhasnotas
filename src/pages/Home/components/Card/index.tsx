@@ -24,7 +24,7 @@ export const Card = ({ todo }: CardProps) => {
 
 
     return (
-        <div className={`mb-2 justify-between rounded-lg p-4 m-1 bg-white cursor-pointer shadow-sm h-fit ${done ? '' : ''}`}>
+        <div className={`mb-2 flex flex-col justify-between rounded-lg p-4 m-1 bg-white cursor-pointer shadow-sm max-h-72`}>
 
             <div className="flex justify-between ">
                 <p className="bg-blue-sec p-1 px-2 rounded-lg text-xs font-bold text-iphone-blue-2">Tarefa</p>
@@ -34,14 +34,14 @@ export const Card = ({ todo }: CardProps) => {
 
             <div >
                 <p onClick={() => onChangeState()} className={`font-bold text-lg text-zinc-600 p-2  ${done ? `line-through` : ''}`}>{todo?.title}</p>
-                <p className={`font-normal text-zinc-600 p-2 whitespace-normal overflow-hidden  ${done ? `line-through` : ''}`}>
+                <p className={`font-normal text-zinc-600 p-2 whitespace-normal overflow-hidden line-clamp-2 ${done ? `line-through` : ''}`}>
                     {todo?.description}
                 </p>
 
                 <div className={`font-normal text-sm  p-2 overflow-ellipsis text-green-400 `}>{todo?.tags.map(item => <div key={item}><button onClick={() => tagSearch(item)} className="underline " >#{item}</button><br /></div>)}</div>
             </div>
 
-            <div className="flex flex-row justify-between border-t mt-4 pt-2">
+            <div className="flex flex-row align-bottom justify-between  border-t mt-4 pt-2">
 
                 <div className="flex align-middle">
 
