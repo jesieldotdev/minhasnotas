@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Cog, FolderOpenDot, LayoutDashboard, LogOut } from 'lucide-react';
+import { Cog, FolderOpenDot, KeyRound, LayoutDashboard, LogOut } from 'lucide-react';
 import { useAppContext } from '../../../../context/AppContext';
 
 const Menu = () => {
@@ -20,7 +20,10 @@ const Menu = () => {
       return 'flashcards';
     } else if (pathname === '/') {
       return 'dashboard';
-    } else if (pathname === '/settings') {
+    } else if (pathname === '/vault') {
+      return 'vault';
+    }
+    else if (pathname === '/settings') {
       return 'settings';
     } else {
       return '';
@@ -37,9 +40,14 @@ const Menu = () => {
   const settingsNavigate = () => {
     navigate('/settings');
   };
+  const vaultNavigate = () => {
+    navigate('/vault');
+  };
+
 
   const menuItems = [
     { id: 'dashboard', label: 'Tarefas', icon: <LayoutDashboard />, callback: dashboardNavigate },
+    { id: 'vault', label: 'Cofre', icon: <KeyRound />, callback: vaultNavigate },
     // { id: 'flashcards', label: 'Flashcards', icon: <FolderOpenDot />, callback: flashCardsNavigate },
   ];
 
@@ -77,12 +85,12 @@ const Menu = () => {
             key={item.id}
             className={`flex items-center font-semibold p-4 rounded w-full ${activeItem === item.id ? 'bg-blue-sec text-iphone-blue border-r-2' : 'text-zinc-500'
               }`}
-              onClick={() => {
-                setActiveItem(item.id);
-                if (item.callback) {
-                  item.callback();
-                }
-              }}
+            onClick={() => {
+              setActiveItem(item.id);
+              if (item.callback) {
+                item.callback();
+              }
+            }}
           >
             {item.icon}
             <span className="ml-2">{item.label}</span>

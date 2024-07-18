@@ -14,6 +14,7 @@ import { Flashcards } from './pages/Flashcards';
 import { SidebarMobile } from './pages/Home/components/SidebarMobile';
 import { AnimatePresence } from 'framer-motion';
 import { Settings } from './pages/Settings';
+import {  Vault } from './pages/Vault';
 
 function App() {
   const { logout, isSidebarOpen, setIsSidebarOpen } = useAppContext();
@@ -59,9 +60,10 @@ function App() {
                   <Dock />
                 </header>
                 <Routes>
-                  <Route path="/" element={<Home />} />
+                  <Route path="/" element={<Home /> } />
                   <Route path="/new" element={<NewTodo onClose={undefined} />} />
                   <Route path="/flashcards" element={<Flashcards />} />
+                  <Route path="/vault" element={<Vault />} />
                   <Route path="/settings" element={<Settings />} />
                 </Routes>
               </div>

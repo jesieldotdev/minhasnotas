@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
-import React, { useState } from "react";
-import { Task } from "@/models/models";
+import { useState } from "react";
+import React from "react";
 
-interface ControllerHomeProps {
 
-}
 
 export const ControllerHome = () => {
 
@@ -13,15 +11,14 @@ export const ControllerHome = () => {
         activeTab,
         searchText,
         isSidebarOpen,
-        setIsSidebarOpen
+        setIsSidebarOpen,
+        tasks, changeOrder, isReverseOrder, isLogging, logout, user, isLoading
     } = useAppContext()
 
     const route = useNavigate()
 
     const options = ['Pendentes', 'Feitas'];
-
-    const { tasks, changeOrder, isReverseOrder, isLogging, logout, user, isLoading } = useAppContext()
-
+    
     React.useEffect(() => {
         if (!isLogging) route('/login')
     }, [isLogging])
@@ -103,7 +100,6 @@ export const ControllerHome = () => {
         isModalOpen,
         isLoading,
         setIsSidebarOpen,
-        isSidebarOpen
-
+        isSidebarOpen,
     }
 }
