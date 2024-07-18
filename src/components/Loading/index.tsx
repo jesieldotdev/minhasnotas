@@ -16,3 +16,16 @@ export const LoadingLottie = () => {
             />
     )
 }
+
+export const LoadingLottieSmall = () => {
+    return (
+        <Lottie
+            loop
+            play
+            color="#ffffff"
+            style={{ width: 64, height: 64 }}
+            animationData={Loading}
+            className="text-center p-0"
+            />
+    )
+}
