@@ -102,9 +102,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
         // if (activeTab === 'completed') {
             const completed = tasks.filter(item => item.status === 'completed').length
             const pendents = tasks.filter(item => item.status === 'incomplete').length
-            console.log(pendents)
-            console.log(completed)
-            console.log(tasks)
             setQuantities([
                 {
                     value: 'completed',

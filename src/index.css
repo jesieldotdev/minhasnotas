@@ -22,7 +22,9 @@ body {
   width: 100vw;
   height: 100vh;
   
-  
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
 }
 
 p,

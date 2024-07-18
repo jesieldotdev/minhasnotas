@@ -16,8 +16,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Settings } from './pages/Settings';
 
 function App() {
-  const { logout,isSidebarOpen, setIsSidebarOpen } = useAppContext();
-  // const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const { logout, isSidebarOpen, setIsSidebarOpen } = useAppContext();
   const [sidebarWidth, setSidebarWidth] = useState(250); // largura inicial da sidebar
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const navigate = useNavigate();
@@ -27,7 +26,6 @@ function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
 
   const handleCloseModal = () => {
     setIsSidebarOpen(false);
@@ -42,18 +40,21 @@ function App() {
         path="*"
         element={
           !isMobile ? (
-            <div className="flex">
+            <div style={{
+              overflowY: 'hidden',
+              height: '100vh'
+            }} className="flex">
               <div
                 className="relative"
-                style={{width: sidebarWidth}}
+                style={{ width: sidebarWidth }}
               >
                 <Header className="border-b min-h-20" />
-                <SideBar className="block " />
+                <SideBar className="block" />
               </div>
               <div className="flex-1">
                 <header className="min-h-20 border-b border-l flex justify-between">
                   <div className="mt-4 ml-4">
-                    <SearchInput className="" />
+                    <SearchInput />
                   </div>
                   <Dock />
                 </header>
@@ -62,7 +63,6 @@ function App() {
                   <Route path="/new" element={<NewTodo onClose={undefined} />} />
                   <Route path="/flashcards" element={<Flashcards />} />
                   <Route path="/settings" element={<Settings />} />
-
                 </Routes>
               </div>
             </div>
@@ -72,13 +72,13 @@ function App() {
               <AnimatePresence>
                 {isSidebarOpen && (
                   <SidebarMobile onClose={handleCloseModal} />
-
                 )}
               </AnimatePresence>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/new" element={<NewTodo onClose={undefined} />} />
                 <Route path="/flashcards" element={<Flashcards />} />
+                <Route path="/settings" element={<Settings />} />
               </Routes>
             </>
           )
