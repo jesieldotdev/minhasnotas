@@ -3,7 +3,7 @@ import { SearchIcon } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
 
 interface SearchInputProps {
-  className: string
+  className?: string
 }
 
 const SearchInput = ({ className }: SearchInputProps) => {
