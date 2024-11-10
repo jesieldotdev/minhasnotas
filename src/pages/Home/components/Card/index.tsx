@@ -45,7 +45,7 @@ export const Card = ({ todo }: CardProps) => {
 
                 <div className="flex align-middle">
 
-                    <p className=" text-xs text-slate-400 mr-2">{dayjs(todo?.startDate).format(`DD [de] MMMM`)}</p>
+                    <p className=" text-xs text-slate-400 mr-2">{dayjs(todo?.end_date).format(`DD [de] MMMM`)}</p>
                     {
                         done ? <div className="bg-iphone-blue text-iphone-white text-xs rounded-full p-1"><Check size={12} /></div> : null
                     }

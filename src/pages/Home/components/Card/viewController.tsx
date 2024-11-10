@@ -25,7 +25,7 @@ export const ControllerCard = ({
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                status: !done,
+                status: done ? 'incompleted' : 'completed',
             }),
         })
             .then(res => res.json())
