@@ -1,13 +1,11 @@
 export interface Task {
   title: string;
   description: string;
-  startDate: string;
-  endDate: strinh;
+  start_date: null;
+  end_date: null;
   status?: "incomplete" | "completed";
   id: number | string;
-  createdAt: string;
+  created_at: string;
   tags: string[];
-  startDate: string;
-  endDate: string;
-  author: string;
+  author_id: string;
 }

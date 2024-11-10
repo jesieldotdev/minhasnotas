@@ -71,8 +71,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
         fetch(`${import.meta.env.VITE_API_URL}/tasks`)
             .then(response => response.json())
             .then(data => {
-                const tasks = data.filter((task: Task) => task.author === user?.email);
-                setTasks(isReverseOrder ? tasks : tasks.reverse());
+                const tasks: Tasks = data.tasks
+                // const tasks = data.filter((task: Task) => task.author === user?.email);
+                setTasks(tasks);
+                // setTasks(isReverseOrder ? tasks : tasks.reverse());
                 setIsLoading(false);
             });
     }
@@ -84,12 +86,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
     React.useEffect(() => {
         const timeoutId = setTimeout(() => {
-        }, 2000);
+        }, 200);
 
         fetch(`${import.meta.env.VITE_API_URL}/tasks`)
             .then(response => response.json())
             .then(data => {
-                setTasks(isReverseOrder ? data.reverse() : data);
+                setTasks(data.tasks);
+                // setTasks(isReverseOrder ? data.reverse() : data);
                 setIsLoading(false);
             });
 
