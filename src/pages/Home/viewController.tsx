@@ -1,31 +1,37 @@
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
-
-
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "../../store";
+import { fetchTasks } from "../store/slices/tasksSlice";
 
 export const ControllerHome = () => {
-
     const {
         activeTab,
         searchText,
         isSidebarOpen,
         setIsSidebarOpen,
-        tasks, changeOrder, isReverseOrder, isLogging, logout, user, isLoading
-    } = useAppContext()
+        changeOrder,
+        isReverseOrder,
+        isLogging,
+        logout,
+        user,
+        isLoading,
+        tasks
+    } = useAppContext();
 
-    const route = useNavigate()
+    const route = useNavigate();
 
-    const options = ['Pendentes', 'Feitas'];
-    
+    const options = ["Pendentes", "Feitas"];
+
     React.useEffect(() => {
-        if (!isLogging) route('/login')
-    }, [isLogging])
+        if (!isLogging) route("/login");
+    }, [isLogging]);
 
     function onNewTodo() {
-        route('/new')
-        return
+        route("/new");
+        return;
     }
 
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -36,10 +42,9 @@ export const ControllerHome = () => {
         } else {
             setSelectedOptions([...selectedOptions, option]);
         }
-    }
+    };
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-
 
     const handleNewTodo = () => {
         setIsModalOpen(true);
@@ -50,45 +55,59 @@ export const ControllerHome = () => {
         setIsSidebarOpen(false);
     };
 
-
     function getTasks() {
         if (!tasks) return [];
 
-        let filter = tasks
+        let filter = tasks.reverse();
 
         switch (activeTab) {
-            case 'all':
+            case "all":
                 break;
-            case 'pendents':
-                filter = filter.filter(item => item.status === 'incomplete');
+            case "pendents":
+                filter = filter.filter(item => item.status === "incomplete");
                 break;
-            case 'completed':
-                filter = filter.filter(item => item.status === 'completed');
+            case "completed":
+                filter = filter.filter(item => item.status === "completed");
                 break;
             default:
                 break;
         }
 
         if (searchText) {
-            filter = filter.filter(item =>
-                item.title.toLowerCase().includes(searchText.toLowerCase()) ||
-                item.description.toLowerCase().includes(searchText.toLowerCase()) ||
-                item.tags.some(tag => tag.toLowerCase().includes(searchText.toLowerCase()))
+            filter = filter.filter(
+                item =>
+                    item.title
+                        .toLowerCase()
+                        .includes(searchText.toLowerCase()) ||
+                    item.description
+                        .toLowerCase()
+                        .includes(searchText.toLowerCase()) ||
+                    item.tags.some(tag =>
+                        tag.toLowerCase().includes(searchText.toLowerCase())
+                    )
             );
         }
 
         return filter;
     }
 
-
-
+   const dispatch: AppDispatch = useDispatch();
+     const {  loading, name } = useSelector((state: RootState) => state.tasks);
+    
+   useEffect(() => {
+        dispatch(fetchUsers());
+      }, [dispatch]);
+    
+       console.log(name)
 
     return {
         tasks,
         changeOrder,
         isReverseOrder,
-        isLogging, logout,
-        user, toggleOption,
+        isLogging,
+        logout,
+        user,
+        toggleOption,
         onNewTodo,
         options,
         selectedOptions,
@@ -98,6 +117,6 @@ export const ControllerHome = () => {
         isModalOpen,
         isLoading,
         setIsSidebarOpen,
-        isSidebarOpen,
-    }
-}
+        isSidebarOpen
+    };
+};

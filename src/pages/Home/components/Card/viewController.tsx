@@ -1,7 +1,7 @@
 import { useAppContext } from "../../../../context/AppContext"
 import { Task } from "@/models/models"
 import { useState } from "react"
-
+import { enqueueSnackbar } from 'notistack';
 interface ControllerCardProps{
     todo: Task
 }
@@ -41,8 +41,12 @@ export const ControllerCard = ({
                 'Content-Type': 'application/json',
             },
         })
-            .then(res => res.json())
-            .catch(error => console.error('Erro ao atualizar os dados:', error));
+            .then(res => {
+              enqueueSnackbar("Tarefa excluida!");
+            return  res.json()
+            }
+              )
+            .catch(error => enqueueSnackbar('Erro ao excluir a tarefa!: ', error));
         fetchTasks()
     }
 
