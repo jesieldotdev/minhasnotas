@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../store";
-import { fetchTasks } from "../store/slices/tasksSlice";
+import { fetchTasks } from "../../store/slices/tasks";
+
+
 
 export const ControllerHome = () => {
     const {
@@ -18,8 +20,12 @@ export const ControllerHome = () => {
         logout,
         user,
         isLoading,
-        tasks
+     
     } = useAppContext();
+
+    
+   const dispatch: AppDispatch = useDispatch();
+   const {  loading, name, tasks } = useSelector((state: RootState) => state.tasks);
 
     const route = useNavigate();
 
@@ -58,7 +64,7 @@ export const ControllerHome = () => {
     function getTasks() {
         if (!tasks) return [];
 
-        let filter = tasks.reverse();
+        let filter = tasks;
 
         switch (activeTab) {
             case "all":
@@ -91,17 +97,15 @@ export const ControllerHome = () => {
         return filter;
     }
 
-   const dispatch: AppDispatch = useDispatch();
-     const {  loading, name } = useSelector((state: RootState) => state.tasks);
     
    useEffect(() => {
-        dispatch(fetchUsers());
+        dispatch(fetchTasks());
       }, [dispatch]);
     
-       console.log(name)
+   
 
     return {
-        tasks,
+        tasks: getTasks,
         changeOrder,
         isReverseOrder,
         isLogging,
@@ -115,7 +119,7 @@ export const ControllerHome = () => {
         getTasks,
         handleNewTodo,
         isModalOpen,
-        isLoading,
+        isLoading: loading,
         setIsSidebarOpen,
         isSidebarOpen
     };
